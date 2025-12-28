@@ -1,5 +1,6 @@
 import { v2 as cloudinary } from "cloudinary";
 import { config } from "../config/index.js";
+import fs from "fs";
 
 cloudinary.config({
     api_key: config.cloudinaryApiKey,
@@ -21,9 +22,11 @@ export const upload = async (imagePath:string) => {
         resource_type:"auto"
       });
       //console.log(result);
+      fs.unlinkSync(imagePath);
       return {publicId: result.public_id, url:result.secure_url};
     } catch (error) {
       console.error(error);
+      fs.unlinkSync(imagePath);
       return null;
     }
 };
