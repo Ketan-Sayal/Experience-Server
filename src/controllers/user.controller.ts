@@ -7,6 +7,7 @@ import { User } from "../models/user.model.js";
 import jwt from "jsonwebtoken";
 import { config } from "../config/index.js";
 import bcrypt from "bcrypt";
+import { Experience } from "../models/experience.model.js";
 
 const signup = asyncHandler(async(req:Request, res:Response, _:NextFunction)=>{
     const {username, email, password} = req.body;
@@ -68,8 +69,17 @@ const getUserData = asyncHandler(async(req:Request, res:Response, _:NextFunction
     );
 });
 
+const getUserPurchases = asyncHandler(async(req:Request, res:Response, _:NextFunction)=>{
+    const userId = req.userId;
+    const userPurchases = await Experience.find({
+        "alreadyBooked.user": userId,
+    });
+    return res.status(200).json(new ApiResponse(200, {experiences:userPurchases}, "User purchased experiences sent successfully"));
+});
+
 export {
     signup,
     signin,
-    getUserData
+    getUserData,
+    getUserPurchases
 }
