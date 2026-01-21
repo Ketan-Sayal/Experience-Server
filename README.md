@@ -1,6 +1,6 @@
 # BookIt Server
 
-A production-ready backend for the *Experience* platform built using  
+A production-ready backend for the *BookIt* platform built using  
 **Node.js, TypeScript, MongoDB, Razorpay payment integration, and Zod validation**.
 
 This server handles business logic, secure payments, validation, pagination, and API communication for the frontend client.
