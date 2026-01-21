@@ -1,4 +1,4 @@
-# Experience Server
+# BookIt Server
 
 A production-ready backend for the *Experience* platform built using  
 **Node.js, TypeScript, MongoDB, Razorpay payment integration, and Zod validation**.
